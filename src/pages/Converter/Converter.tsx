@@ -34,9 +34,8 @@ const Converter = () => {
     const { priceFrom, priceTo } = onChangePrice();
 
     if (typeof e === 'number') {
-      const result = (e * priceFrom) / priceTo;
-      setToPrice(result);
-      setFromPrice(e);
+      const result = (priceTo / priceFrom) * toPrice;
+      setFromPrice(result);
       return;
     }
     const inputValue = +e.target.value;
@@ -49,9 +48,8 @@ const Converter = () => {
     const { priceFrom, priceTo } = onChangePrice();
 
     if (typeof e === 'number') {
-      const result = (e * priceTo) / priceFrom;
-      setFromPrice(result);
-      setToPrice(e);
+      const result = (priceFrom / priceTo) * fromPrice;
+      setToPrice(result);
       return;
     }
     const inputValue = +e.target.value;
@@ -77,7 +75,7 @@ const Converter = () => {
           }
         };
         ratesRef.current = newObj;
-        onChangeToPrice(1);
+        // onChangeFromPrice(1);
       })
       .catch(err => console.error(err.message));
   }, []);
