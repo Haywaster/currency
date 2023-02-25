@@ -1,0 +1,45 @@
+.block {
+  margin: 0 10px;
+  width: 20%;
+}
+
+.currencyes {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  background-color: rgb(255, 255, 255);
+  border-radius: 7px;
+}
+
+.currencyes li {
+  width: 100%;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.active {
+  color: #fff;
+  background-color: rgb(81, 179, 81);
+}
+
+.input {
+  margin-top: 10px;
+  width: -webkit-fill-available;
+  outline: none;
+  height: 75px;
+  padding: 0.375rem 0.75rem;
+  font-family: inherit;
+  font-size: 40px;
+  font-weight: 700;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

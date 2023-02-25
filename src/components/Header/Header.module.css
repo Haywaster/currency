@@ -1,0 +1,39 @@
+.header {
+  margin: 10px;
+  background-color: #204ecf;
+  color: white;
+  width: 1300px;
+  height: 7vh;
+  margin-right: 20px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.logo {
+  font-size: 23px;
+  margin: 0 0 0 15px;
+}
+
+.links {
+  margin-right: 15px;
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+}
+
+.link {
+  padding: 0 16px 0 16px;
+  margin-right: 10px;
+  border: solid 1px rgba(255, 255, 255, 0.32);
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  outline: none;
+  transition-duration: 350ms;
+}
+.link:hover {
+  border-color: #fff;
+}
