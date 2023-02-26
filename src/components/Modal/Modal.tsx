@@ -11,7 +11,7 @@ interface ModalProps {
 const Modal = ({ allData, onChangeCurrency, closeModal }: ModalProps) => {
   const arrItems = [];
 
-  for (let key in allData) {
+  for (const key in allData) {
     arrItems.push(allData[key]);
   }
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useConvertor } from '../../hooks/useConvertor';
 
 import Block from '../../components/Block';
