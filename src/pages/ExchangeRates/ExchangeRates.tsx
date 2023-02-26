@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './ExchangeRates.module.css';
 
+import { useExcangeRates } from '../../hooks/useExcangeRates';
+import { ICurrency } from '../../models';
+
 const ExchangeRates = () => {
+  const [activeCur, setActiveCur] = useState<string>('RUB');
+  const [activeCurValue, setActiveCurValue] = useState<number>(1);
+  const { arrayItems } = useExcangeRates();
+
+  const findCur = (el: ICurrency) => {
+    setActiveCur(el.CharCode);
+    setActiveCurValue(el.Price);
+  };
+
   return (
     <div>
       <h2>Пожалуйста, выберите исходную валюту</h2>
+
       <div className={style.initial}>
-        <div className={style.initial_currency}>RUB</div>
-        <div className={style.initial_currency}>USD</div>
-        <div className={style.initial_currency}>EUR</div>
+        {arrayItems.map(el => (
+          <div key={el.ID} onClick={() => findCur(el)} className={style.initial_currency}>
+            {el.CharCode}
+          </div>
+        ))}
         <div className={style.initial_currency}>
           <svg
             width='10'
@@ -30,15 +45,19 @@ const ExchangeRates = () => {
           <thead className={style.valute_info_header}>
             <tr>
               <th>Валюта</th>
-              <th>Курс ЦБ РФ</th>
+              <th>Курс относительно {activeCur}</th>
             </tr>
           </thead>
 
           <tbody className={style.valute_info_body}>
-            <tr>
-              <td>Доллар США</td>
-              <td>74.7087</td>
-            </tr>
+            {arrayItems.map(el => {
+              return (
+                <tr key={el.ID}>
+                  <td>{el.Name}</td>
+                  <td>{(el.Price / activeCurValue).toFixed(3)}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

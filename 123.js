@@ -3,4 +3,6 @@ const obj = {
   surname: 'Smith'
 };
 
+obj.vova = 'Vova';
+
 console.log(obj);

@@ -10,4 +10,5 @@ export interface ICurrency {
   NumCode: string;
   Previous: number;
   Value: number;
+  Price: number;
 }

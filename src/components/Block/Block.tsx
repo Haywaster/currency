@@ -13,7 +13,7 @@ interface BlockProps {
   allData: ICurrencies;
 }
 
-const defaultCurrencies = ['RUB', 'USD', 'EUR'];
+const defaultCurrencies: string[] = ['RUB', 'USD', 'EUR'];
 
 const Block = ({
   value,
