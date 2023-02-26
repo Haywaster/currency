@@ -1,4 +1,16 @@
 .converter {
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.img_area {
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+}
+
+.img_area img {
+  width: 75px;
 }

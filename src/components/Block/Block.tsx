@@ -1,16 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from '../Modal';
 import style from './Block.module.css';
+import { ICurrencies } from '../../models';
 
 interface BlockProps {
   value: number;
   currency: string;
   onChangeCurrency: (cur: string) => void;
   onChangeValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  price: number;
+  otherCurrency: string;
+  allData: ICurrencies;
 }
 
 const defaultCurrencies = ['RUB', 'USD', 'EUR'];
 
-const Block = ({ value, currency, onChangeCurrency, onChangeValue }: BlockProps) => {
+const Block = ({
+  value,
+  currency,
+  onChangeCurrency,
+  onChangeValue,
+  price,
+  otherCurrency,
+  allData
+}: BlockProps) => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const modalHandler = () => {
+    setOpenModal(prev => !prev);
+  };
+
   return (
     <div className={style.block}>
       <ul className={style.currencyes}>
@@ -22,27 +41,21 @@ const Block = ({ value, currency, onChangeCurrency, onChangeValue }: BlockProps)
             {cur}
           </li>
         ))}
-        <li>
-          <svg
-            width='10px'
-            height='10px'
-            viewBox='0 0 10 6'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'>
-            <path
-              d='M10 5C10 5.16927 9.93815 5.31576 9.81445 5.43945C9.69075 5.56315 9.54427 5.625 9.375 5.625H0.625C0.455729 5.625 0.309245 5.56315 0.185547 5.43945C0.061849 5.31576 0 5.16927 0 5C0 4.83073 0.061849 4.68424 0.185547 4.56055L4.56055 0.185547C4.68424 0.061849 4.83073 0 5 0C5.16927 0 5.31576 0.061849 5.43945 0.185547L9.81445 4.56055C9.93815 4.68424 10 4.83073 10 5Z'
-              fill='#2C2C2C'
-            />
+        <li className={openModal ? style.active : ''} onClick={modalHandler}>
+          <svg className={style.arrow} viewBox='0 0 5 9'>
+            <path d='M0.419,9.000 L0.003,8.606 L4.164,4.500 L0.003,0.394 L0.419,0.000 L4.997,4.500 L0.419,9.000 Z' />
           </svg>
         </li>
       </ul>
-      <input
-        onChange={onChangeValue}
-        className={style.input}
-        value={value}
-        type='number'
-        placeholder='Валюта'
-      />
+      <div className={style.input_box}>
+        <input onChange={onChangeValue} value={value} type='number' placeholder='Валюта' />
+        <div className={style.currency}>
+          1 {currency} = {price} {otherCurrency}
+        </div>
+      </div>
+      {openModal && (
+        <Modal closeModal={modalHandler} onChangeCurrency={onChangeCurrency} allData={allData} />
+      )}
     </div>
   );
 };

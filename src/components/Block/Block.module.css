@@ -1,6 +1,6 @@
 .block {
   margin: 0 10px;
-  width: 20%;
+  width: 30%;
 }
 
 .currencyes {
@@ -25,21 +25,34 @@
   background-color: rgb(81, 179, 81);
 }
 
-.input {
-  margin-top: 10px;
+.input_box {
+  margin: 24px 0;
+  padding: 30px 20px 15px;
+  border: 1px solid #cdcdcd;
+}
+
+.input_box input {
   width: -webkit-fill-available;
   outline: none;
   height: 75px;
-  padding: 0.375rem 0.75rem;
   font-family: inherit;
   font-size: 40px;
   font-weight: 700;
-  border: 1px solid #bdbdbd;
-  border-radius: 0.25rem;
+  border: 0;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.currency {
+  text-align: left;
+  font-weight: 300;
+}
+
+.arrow {
+  transform: rotate(90deg);
+  width: 12px;
 }
